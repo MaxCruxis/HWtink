@@ -22,6 +22,7 @@ public final class Main {
             // Press Shift+F9 to start debugging your code. We have set one breakpoint
             // for you, but you can always add more by pressing Ctrl+F8.
             LOGGER.info("i = {}", i);
+            System.out.printf("i = %d", i);
         }
     }
 }
