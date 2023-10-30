@@ -1,17 +1,10 @@
 package edu.hw1.task6;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.*;
 
 public class CountK {
-    /*public static void main(String[] args) {
-        System.out.println(CountK.countK(3524));
-        System.out.println(CountK.countK(6621));
-        System.out.println(CountK.countK(6554));
-        System.out.println(CountK.countK(1234));
-    }*/
-
     private static int count = 0;
     private static final int ONE_THOUSAND = 1000;
     private static final int ONE_HUNDRED = 100;
@@ -31,26 +24,37 @@ public class CountK {
     }
 
     public int countK(int value) {
-        if (value == KAPREKARS_CONSTANT) {
+        final int ten = 10;
+        int val = value;
+        if (val == KAPREKARS_CONSTANT) {
             int i = getCount();
             CountK.setCount(0);
             return i;
         } else {
             List<Integer> digits = new ArrayList<>();
-            while (value > 0) {
-                digits.add(value % 10);
-                value /= 10;
+            while (val > 0) {
+                digits.add(val % ten);
+                val /= ten;
             }
             List<Integer> reverseDigits;
-            if (digits.get(NULL).equals(digits.get(FIRST)) && digits.get(NULL).equals(digits.get(SECOND)) && digits.get(NULL).equals(digits.get(THIRD))) {
+            if (digits.get(NULL).equals(digits.get(FIRST))
+                    && digits.get(NULL).equals(digits.get(SECOND))
+                    && digits.get(NULL).equals(digits.get(THIRD))) {
                 return count;
             } else {
                 Collections.sort(digits);
                 reverseDigits = new ArrayList<>(digits.reversed());
             }
-            value = reverseDigits.get(NULL) * ONE_THOUSAND + reverseDigits.get(FIRST) * ONE_HUNDRED + reverseDigits.get(SECOND) * TEN + reverseDigits.get(THIRD) - digits.get(NULL) * ONE_THOUSAND - digits.get(FIRST) * ONE_HUNDRED - digits.get(SECOND) * TEN - digits.get(THIRD);
+            val = reverseDigits.get(NULL) * ONE_THOUSAND
+                    + reverseDigits.get(FIRST) * ONE_HUNDRED
+                    + reverseDigits.get(SECOND) * TEN
+                    + reverseDigits.get(THIRD)
+                    - digits.get(NULL) * ONE_THOUSAND
+                    - digits.get(FIRST) * ONE_HUNDRED
+                    - digits.get(SECOND) * TEN
+                    - digits.get(THIRD);
             CountK.setCount(getCount() + 1);
-            return countK(value);
+            return countK(val);
         }
     }
 }

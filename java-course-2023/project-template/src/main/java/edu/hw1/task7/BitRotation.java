@@ -7,7 +7,8 @@ public class BitRotation {
 
     public int rotateLeft(Integer value, int times) {
         LinkedList<Integer> list = new LinkedList<>();
-        Arrays.stream(Integer.toBinaryString(value).split("")).map(String::trim).forEach(x -> list.add(Integer.parseInt(x)));
+        Arrays.stream(Integer.toBinaryString(value).split("")).map(String::trim)
+                .forEach(x -> list.add(Integer.parseInt(x)));
         for (int i = 0; i < times; i++) {
             list.addLast(list.pollFirst());
         }
@@ -20,7 +21,8 @@ public class BitRotation {
 
     public int rotateRight(Integer value, int times) {
         LinkedList<Integer> list = new LinkedList<>();
-        Arrays.stream(Integer.toBinaryString(value).split("")).map(String::trim).forEach(x -> list.add(Integer.parseInt(x)));
+        Arrays.stream(Integer.toBinaryString(value).split("")).map(String::trim)
+                .forEach(x -> list.add(Integer.parseInt(x)));
         for (int i = 0; i < times; i++) {
             list.addFirst(list.pollLast());
         }

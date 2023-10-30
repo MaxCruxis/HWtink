@@ -1,23 +1,18 @@
 package edu.hw1.task5;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class IsPalindromeDescendant {
-//    public static void main(String[] args) {
-//        System.out.println(isDescendant(11211230));
-//        System.out.println(isDescendant(13001120));
-//        System.out.println(isDescendant(23336014));
-//        System.out.println(isDescendant(11));
-//        System.out.println(isDescendant(12));
-//
-//    }
 
-    public  boolean isDescendant(int value) {
+    public boolean isDescendant(int value) {
         List<Integer> digits = new ArrayList<>();
-        while (value > 0) {
-            digits.add(value % 10);
-            value /= 10;
+        final int ten = 10;
+        int val = value;
+        while (val > 0) {
+            digits.add(val % ten);
+            val /= ten;
         }
 
         int left = 0;
@@ -30,10 +25,13 @@ public class IsPalindromeDescendant {
             } else if (digits.size() % 2 == 0) {
                 List<Integer> arr = new ArrayList<>();
                 for (int i = 0; i < digits.size() - 1; i += 2) {
-                    if (digits.get(i) + digits.get(i + 1) > 9) {
-                        arr.add((digits.get(i) + digits.get(i + 1)) / 10);
-                        arr.add((digits.get(i) + digits.get(i + 1)) % 10);
-                    } else arr.add(digits.get(i) + digits.get(i + 1));
+                    final int digitLimit = 9;
+                    if (digits.get(i) + digits.get(i + 1) > digitLimit) {
+                        arr.add((digits.get(i) + digits.get(i + 1)) / ten);
+                        arr.add((digits.get(i) + digits.get(i + 1)) % ten);
+                    } else {
+                        arr.add(digits.get(i) + digits.get(i + 1));
+                    }
                 }
                 digits = arr;
                 left = 0;
@@ -43,7 +41,9 @@ public class IsPalindromeDescendant {
             }
 
         }
-        if (digits.size() < 2) return false;
+        if (digits.size() < 2) {
+            return false;
+        }
         return statement;
 
     }
